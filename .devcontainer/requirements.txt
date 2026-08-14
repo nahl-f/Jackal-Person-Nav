@@ -1,0 +1,8 @@
+numpy==1.26.4
+opencv-python==4.9.0.80
+torch==2.13.0
+torchvision==0.28.0
+ultralytics==8.4.104
+tensorflow==2.21.0
+tf_keras==2.21.0
+deepface==0.0.100

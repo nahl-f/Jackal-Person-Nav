@@ -1,0 +1,41 @@
+{
+    "scenario_1": {
+        "target": "nahl",
+        "home": 0.0,
+        "kitchen": 0.85,
+        "office": 0.0,
+        "study": 0.0,
+        "main": 0.0,
+        "phd_office": 0.0,
+        "lab": 1.0
+
+    },
+    "scenario_2": {
+        "home": 0.95,
+        "kitchen": 0.74,
+        "office": 0.55,
+        "warehouse": 0.33,
+        "laboratory": 0.48
+    },
+    "scenario_3": {
+        "home": 0.26,
+        "kitchen": 0.32,
+        "office": 0.59,
+        "warehouse": 0.42,
+        "laboratory": 0.22
+    },
+    "scenario_4": {
+        "home": 0.62,
+        "kitchen": 0.97,
+        "office": 0.95,
+        "warehouse": 0.13,
+        "laboratory": 0.89
+    },
+    "scenario_5": {
+        "home": 0.21,
+        "kitchen": 0.18,
+        "office": 0.94,
+        "warehouse": 0.82,
+        "laboratory": 0.77
+    }
+}

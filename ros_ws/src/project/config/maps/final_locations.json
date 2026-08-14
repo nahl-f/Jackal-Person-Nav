@@ -1,0 +1,41 @@
+{
+    "locations": {
+        "start_1": {
+            "x": 258,
+            "y": 227
+        },
+        "phd_office": {
+            "x": 304,
+            "y": 315
+        },
+        "lounge": {
+            "x": 299,
+            "y": 163
+        },
+        "start_0": {
+            "x": 569,
+            "y": 169
+        },
+        "collaborative_space": {
+            "x": 599,
+            "y": 130
+        },
+        "start 3": {
+            "x": 662,
+            "y": 114
+        },
+        "lab": {
+            "x": 711,
+            "y": 500
+        },
+        "student_office": {
+            "x": 751,
+            "y": 536
+        },
+        "study_area": {
+            "x": 696,
+            "y": 114
+        }
+    },
+    "image_height": 673
+}

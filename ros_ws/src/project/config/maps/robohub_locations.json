@@ -1,0 +1,17 @@
+{
+  "locations": {
+    "home": {
+      "x": 84,
+      "y": 86
+    },
+    "kitchen": {
+      "x": 46,
+      "y": 74
+    },
+    "office": {
+      "x": 104,
+      "y": 46
+    }
+  },
+  "image_height": 119
+}

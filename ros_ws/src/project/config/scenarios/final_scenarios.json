@@ -1,0 +1,59 @@
+{
+    "scenario_1": {
+        "target": "hisham",
+        "study_area": 6,
+        "collaborative_space": 5,
+        "phd_office": 4,
+        "lounge": 3,
+        "student_office": 2,
+        "lab": 1
+    },
+    "scenario_2": {
+        "target": "tyler",
+        "collaborative_space": 6,
+        "student_office": 5,
+        "lab": 4,
+        "phd_office": 3,
+        "lounge": 2,
+        "study_area": 1
+    },
+    "scenario_3": {
+        "target": "tyler",
+        "student_office": 6,
+        "collaborative_space": 5,
+        "study_area": 4,
+        "lounge": 3,
+        "phd_office": 2,
+        "lab": 1
+    },
+    "scenario_4": {
+        "target": "nahl",
+        "lab": 6,
+        "student_office": 5,
+        "lounge": 4,
+        "phd_office": 3,
+        "collaborative_space": 2,
+        "study_area": 1
+    },
+    "scenario_5": {
+        "target": "person"
+    },
+    "DEMO_1_SCENARIO": {
+        "target": "nahl",
+        "collaborative_space": 6,
+        "study_area": 5,
+        "student_office": 4,
+        "lab": 3,
+        "phd_office": 2,
+        "lounge": 1
+    },
+    "DEMO_2_SCENARIO": {
+        "target": "nahl",
+        "lab": 6,
+        "student_office": 5,
+        "lounge": 4,
+        "phd_office": 3,
+        "collaborative_space": 2,
+        "study_area": 1
+    }
+}

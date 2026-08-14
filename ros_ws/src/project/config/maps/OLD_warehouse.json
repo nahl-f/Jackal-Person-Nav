@@ -1,0 +1,30 @@
+{
+  "locations": {
+    "home": {
+      "x": 486,
+      "y": 805,
+      "ori" : 90
+    },
+    "kitchen": {
+      "x": 922,
+      "y": 1437,
+      "ori" : 180
+    },
+    "office": {
+      "x": 922,
+      "y": 1611,
+      "ori" : 270
+    },
+    "warehouse": {
+      "x": 69,
+      "y": 509,
+      "ori" : 0
+    },
+    "laboratory": {
+      "x": 325,
+      "y": 1236,
+      "ori" : 0
+    }
+  },
+  "image_height": 1012
+}

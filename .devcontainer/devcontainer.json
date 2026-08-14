@@ -1,0 +1,53 @@
+{
+    "name": "Jackal ROS2 Humble",
+
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+
+    "initializeCommand": "xhost +local:docker",
+
+    "workspaceFolder": "/workspaces",
+
+    "runArgs": [
+        "--net=host",
+        "--ipc=host",
+        "--privileged",
+
+        // Required for NVIDIA + X11 display forwarding to work together
+        "--gpus=all",
+        "--env=DISPLAY=${localEnv:DISPLAY}",
+
+        // Qt MIT shared memory fix
+        "--env=QT_X11_NO_MITSHM=1",
+        "--env=NVIDIA_VISIBLE_DEVICES=all",
+        "--env=NVIDIA_DRIVER_CAPABILITIES=all",
+
+        // X11 socket for display forwarding
+        "--volume=/tmp/.X11-unix:/tmp/.X11-unix:rw",
+
+        // Realsense Camera
+        "--privileged",
+        "--device=/dev/bus/usb:/dev/bus/usb",
+        "--device-cgroup-rule=c 189:* rmw"
+    ],
+
+    "remoteEnv": {
+        "DISPLAY": "${localEnv:DISPLAY}",
+        "CLEARPATH_CONFIG_DIR": "/workspaces/clearpath"
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-iot.vscode-ros",
+                "ms-python.python",
+                "ms-vscode.cpptools",
+                "ms-vscode.cmake-tools"
+            ]
+        }
+    },
+    "remoteUser": "user",
+    "postCreateCommand": "rosdep update"
+}

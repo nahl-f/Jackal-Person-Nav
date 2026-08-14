@@ -1,0 +1,8 @@
+# Request
+string target_name
+---
+# Result
+bool is_found
+---
+# Feedback
+string status

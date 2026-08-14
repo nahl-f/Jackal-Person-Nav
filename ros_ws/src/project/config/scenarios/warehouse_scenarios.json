@@ -1,0 +1,16 @@
+{
+    "scenario_1": {
+        "target": "nahl",
+        "home": 9,
+        "first": 8,
+        "second": 7,
+        "last": 6
+    },
+    "scenario_2": {
+        "target": "tyler",
+        "home": 0.95,
+        "first": 0.74,
+        "second": 0.55,
+        "last": 0.33
+    }
+}
