@@ -45,6 +45,12 @@ RUN apt-get install -y \
 # RUN pip3 install --no-cache-dir opencv-python ultralytics deepface \
 #     && pip3 freeze > /requirements.txt
 
+# ROS 2 Humble's cv_bridge and other compiled Python extensions
+# require NumPy 1.x.
+RUN python3 -m pip install --no-cache-dir \
+    numpy==1.26.4
+
+# PyTorch + Torchvision with CUDA 12.4 support
 RUN python3 -m pip install --no-cache-dir \
     torch==2.6.0 \
     torchvision==0.21.0 \
@@ -53,6 +59,10 @@ RUN python3 -m pip install --no-cache-dir \
 # YOLO
 RUN python3 -m pip install --no-cache-dir \
     ultralytics==8.4.104
+
+# Restore ROS-compatible NumPy in case an ML dependency upgraded it.
+RUN python3 -m pip install --no-cache-dir \
+    numpy==1.26.4
 
 # Non-root user 
 ARG USERNAME=user
