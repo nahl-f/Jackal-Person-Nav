@@ -15,30 +15,22 @@
     ],
 
     "runArgs": [
-        "--net=host",
-        "--ipc=host",
-        "--privileged",
+    "--net=host",
+    "--ipc=host",
+    "--privileged",
 
-        // Required for NVIDIA + X11 display forwarding to work together
-        "--gpus=all",
-        "--env=DISPLAY=${localEnv:DISPLAY}",
+    "--gpus=all",
+    "--env=DISPLAY=${localEnv:DISPLAY}",
+    "--env=QT_X11_NO_MITSHM=1",
+    "--env=NVIDIA_VISIBLE_DEVICES=all",
+    "--env=NVIDIA_DRIVER_CAPABILITIES=graphics,compute,utility,display",
 
-        // Qt MIT shared memory fix
-        "--env=QT_X11_NO_MITSHM=1",
-        "--env=NVIDIA_VISIBLE_DEVICES=all",
-        "--env=NVIDIA_DRIVER_CAPABILITIES=all",
+    "--volume=/tmp/.X11-unix:/tmp/.X11-unix:rw",
+    "--device=/dev/dri:/dev/dri",
 
-        // X11 socket for display forwarding
-        "--volume=/tmp/.X11-unix:/tmp/.X11-unix:rw",
-        "--device=/dev/dri:/dev/dri",
-        "--group-add=video",
-        "--group-add=render",
-
-        // Realsense Camera
-        "--privileged",
-        "--device=/dev/bus/usb:/dev/bus/usb",
-        "--device-cgroup-rule=c 189:* rmw"
-    ],
+    "--device=/dev/bus/usb:/dev/bus/usb",
+    "--device-cgroup-rule=c 189:* rmw"
+   ],
 
     "remoteEnv": {
         "DISPLAY": "${localEnv:DISPLAY}",

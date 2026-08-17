@@ -42,8 +42,8 @@ RUN apt-get install -y \
 # COPY .devcontainer/requirements.txt /tmp/requirements.txt
 # RUN pip3 install --no-cache-dir -r /tmp/requirements.txt \
 #     && rm /tmp/requirements.txt
-RUN pip3 install --no-cache-dir opencv-python ultralytics deepface \
-    && pip3 freeze > /requirements.txt
+# RUN pip3 install --no-cache-dir opencv-python ultralytics deepface \
+#     && pip3 freeze > /requirements.txt
 
 # Non-root user 
 ARG USERNAME=user
@@ -55,16 +55,22 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m -s /bin/bash $USERNAME \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
-USER user
-
+    
 # ROS environment setup
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/${USERNAME}/.bashrc
-# Build workspace 
 RUN echo 'if [ -f /workspaces/ros_ws/install/setup.bash ]; then source /workspaces/ros_ws/install/setup.bash; fi' >> /home/${USERNAME}/.bashrc
 
-# NVIDIA Optimus
-RUN echo 'export __NV_PRIME_RENDER_OFFLOAD=1' >> /home/${USERNAME}/.bashrc
-RUN echo 'export __GLX_VENDOR_LIBRARY_NAME=nvidia' >> /home/${USERNAME}/.bashrc
-RUN echo 'export NVIDIA_DRIVER_CAPABILITIES=all' >> /home/${USERNAME}/.bashrc
+# NVIDIA
+RUN echo 'export NVIDIA_DRIVER_CAPABILITIES=graphics,compute,utility,display' >> /home/${USERNAME}/.bashrc
+
+# Dynamic DRM/GPU group setup
+COPY .devcontainer/entrypoint.sh /usr/local/bin/devcontainer-entrypoint.sh
+RUN chmod +x /usr/local/bin/devcontainer-entrypoint.sh
 
 WORKDIR /workspaces/ros_ws
+
+# Must remain root so the entrypoint can add the host DRM groups.
+USER root
+
+ENTRYPOINT ["/usr/local/bin/devcontainer-entrypoint.sh"]
+CMD ["bash"]
