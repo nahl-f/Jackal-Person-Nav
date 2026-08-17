@@ -8,7 +8,8 @@
 
     "initializeCommand": "xhost +local:docker",
 
-    "workspaceFolder": "/workspaces",
+    "workspaceFolder": "/workspaces/ros_ws",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/ros_ws,type=bind",
 
     "runArgs": [
         "--net=host",

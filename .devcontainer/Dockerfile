@@ -39,9 +39,11 @@ RUN apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Python Libraries
-COPY .devcontainer/requirements.txt /tmp/requirements.txt
-RUN pip3 install --no-cache-dir -r /tmp/requirements.txt \
-    && rm /tmp/requirements.txt
+# COPY .devcontainer/requirements.txt /tmp/requirements.txt
+# RUN pip3 install --no-cache-dir -r /tmp/requirements.txt \
+#     && rm /tmp/requirements.txt
+RUN pip3 install --no-cache-dir opencv-python ultralytics deepface \
+    && pip3 freeze > /requirements.txt
 
 # Non-root user 
 ARG USERNAME=user
