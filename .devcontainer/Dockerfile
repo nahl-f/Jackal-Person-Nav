@@ -45,6 +45,15 @@ RUN apt-get install -y \
 # RUN pip3 install --no-cache-dir opencv-python ultralytics deepface \
 #     && pip3 freeze > /requirements.txt
 
+RUN python3 -m pip install --no-cache-dir \
+    torch==2.6.0 \
+    torchvision==0.21.0 \
+    --index-url https://download.pytorch.org/whl/cu124
+
+# YOLO
+RUN python3 -m pip install --no-cache-dir \
+    ultralytics==8.4.104
+
 # Non-root user 
 ARG USERNAME=user
 ARG USER_UID=1000
@@ -55,7 +64,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m -s /bin/bash $USERNAME \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
-    
+
 # ROS environment setup
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/${USERNAME}/.bashrc
 RUN echo 'if [ -f /workspaces/ros_ws/install/setup.bash ]; then source /workspaces/ros_ws/install/setup.bash; fi' >> /home/${USERNAME}/.bashrc
