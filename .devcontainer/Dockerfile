@@ -45,7 +45,6 @@ RUN apt-get install -y \
 # RUN pip3 install --no-cache-dir opencv-python ultralytics deepface \
 #     && pip3 freeze > /requirements.txt
 
-# ROS 2 Humble's cv_bridge and other compiled Python extensions
 # require NumPy 1.x.
 RUN python3 -m pip install --no-cache-dir \
     numpy==1.26.4
