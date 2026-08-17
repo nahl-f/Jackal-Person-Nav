@@ -54,7 +54,7 @@ ARGUMENTS = [
                           choices=['true', 'false'],
                           description='Use sim time'),
     DeclareLaunchArgument('setup_path',
-                          default_value='/home/nahl/clearpath/',
+                          default_value='/home/user/clearpath/',
                           description='Clearpath setup path')
 ]
 
