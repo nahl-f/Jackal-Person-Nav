@@ -13,7 +13,7 @@
     "mounts" : [
         "source=${localWorkspaceFolder}/clearpath,target=/home/user/clearpath,type=bind"
     ],
-    
+
     "runArgs": [
         "--net=host",
         "--ipc=host",
@@ -30,6 +30,9 @@
 
         // X11 socket for display forwarding
         "--volume=/tmp/.X11-unix:/tmp/.X11-unix:rw",
+        "--device=/dev/dri:/dev/dri",
+        "--group-add=video",
+        "--group-add=render",
 
         // Realsense Camera
         "--privileged",
