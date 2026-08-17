@@ -58,11 +58,12 @@ RUN python3 -m pip install --no-cache-dir \
 # YOLO
 RUN python3 -m pip install --no-cache-dir \
     ultralytics==8.4.104
-    
+
 # DeepFace
 RUN python3 -m pip install --no-cache-dir \
     deepface==0.0.100 \
     tf-keras
+    
 # Restore ROS-compatible NumPy in case an ML dependency upgraded it.
 RUN python3 -m pip install --no-cache-dir \
     numpy==1.26.4
