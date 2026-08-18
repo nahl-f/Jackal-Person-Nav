@@ -37,7 +37,7 @@ will update is emtpy for now
 
 
 ## Wireless Connection
-When using Wi-Fi or wireless AP, you must use the robot environment script and provide the robot's IP address as an argument.
+When using Wi-Fi or wireless AP, you must use the ros_robot.env script and provide the robot's IP address as an argument.
 ```bash
 ping <robot_IP>
 source ros_robot.env <robot_IP>
