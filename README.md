@@ -21,7 +21,7 @@ Jackal-Person-Nav/
 ## Building the Workspace
 1. Pull the repository onto your laptop.
 ```text
-git pull https://github.com/nahl-f/Jackal-Person-Nav
+git clone https://github.com/nahl-f/Jackal-Person-Nav
 ```
 2. Open the folder in VS Code using `code .`
 3. Using the **Dev Containers** extension, click **Reopen in Container** and wait for it to build.
