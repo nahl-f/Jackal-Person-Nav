@@ -15,11 +15,11 @@ cd /workspaces/ros_ws/src/project/project
 python3 angle_map_annotator.py /workspaces/ros_ws/src/project/config/maps/<name_of_map>.pgm
 ```
 
--Click the points on the map where you would like to save the location.
--Type the name of the location and press enter.
--Type the orientation required for the goal.
--Repeat this process for all desired locations.
--Open the image window and press **ESC**. The program will automatically save the locations to a JSON file under the maps folder.
+- Click the points on the map where you would like to save the location.
+- Type the name of the location and press enter.
+- Type the orientation required for the goal.
+- Repeat this process for all desired locations.
+- Open the image window and press **ESC**. The program will automatically save the locations to a JSON file under the maps folder.
 
 **Example Output:**
 ```json
