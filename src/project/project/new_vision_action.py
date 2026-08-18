@@ -137,6 +137,7 @@ class VisionSearchServer(Node):
                 img_path=person_crop, 
                 db_path=self.db_path, 
                 model_name="VGG-Face",
+                detector_backend="mtcnn",
                 enforce_detection=False,
                 silent=True
             )
