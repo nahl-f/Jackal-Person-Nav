@@ -33,9 +33,11 @@ cd /workspaces/ros_ws/scripts
 source ros_ethernet.env
 ```
 ## Wi-Fi Setup (Onboard Jackal)
+will update is emtpy for now
 
-## Wi-Fi Connection
-When using Wi-Fi, you must use the robot environment script and provide the robot's IP address as an argument.
+
+## Wireless Connection
+When using Wi-Fi or wireless AP, you must use the robot environment script and provide the robot's IP address as an argument.
 ```bash
 ping <robot_IP>
 source ros_robot.env <robot_IP>
@@ -46,3 +48,7 @@ If unsure what the robot's IP address is, **SSH into the Jackal**:
 ip addr show
 ```
 and look at the IP address shown under wlp2s0. The robot's IP address in the Robohub is : **129.97.71.36**
+
+## Access Point Setup (Onboard Jackal)
+
+will update
