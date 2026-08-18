@@ -7,7 +7,7 @@ source install/setup.bash
 ```
 
 ## Launching Gazebo Simulator
-Launch the gazebo simulation, this utilises the robot.yaml config saved under /home/clearpath. By default, the simulation is in the **warehouse** world.
+Launch the gazebo simulation, this utilises the **robot.yaml** config saved under /home/clearpath. By default, the simulation is in the **warehouse** world.
 
 ```bash
 ros2 launch clearpath_gz simulation.launch.py
@@ -20,20 +20,37 @@ If you'd like to use the keyboard to teleooperate the jackal, in a seperate term
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r cmd_vel:=/jackal1/cmd_vel
 ```
 
-## Mapping & Navigation
+## Navigation
 Ensure the gazebo simulation is running in a seperate terminal first. The **warehouse**  world map is used by default for localisation.
 ```bash
 ros2 launch project localisation.launch.py
 ```
-Launch RViz for visualisation. Provide an **initial pose estimate** using RViz. Change the laser topic to /jackal1/sensors/lidar3d_0/scan using the dropdown menu if laser scans are not visible.  
+In a new terminal, launch RViz for visualisation. Provide an **initial pose estimate** using RViz. Change the laser topic to /jackal1/sensors/lidar3d_0/scan using the dropdown menu if laser scans are not visible.  
 
 ``` bash
 ros2 launch clearpath_viz view_navigation.launch.py namespace:=jackal1
 ```
 
-Launch Nav2
+In a new terminal, launch Nav2
 ```bash
 ros2 launch project nav.launch.py
 ```
 
 Provide goals using **Nav2 Goal** in RViz.
+
+## Mapping
+The warehouse world map is saved by default under /workspaces/ros_ws/src/project/config/maps so mapping shouldn't be required in simulation.
+
+To launch SLAM:
+```bash
+ros2 launch project slam.launch.py
+```
+In a new terminal, launch RViz for visualisation.
+
+``` bash
+ros2 launch clearpath_viz view_navigation.launch.py namespace:=jackal1
+```
+Once mapping is complete, open a new terminal and run the map_saver.
+```bash
+ros2 run nav2_map_server map_saver_cli -f <map_name> --ros-args -r map:=/jackal1/map
+```
