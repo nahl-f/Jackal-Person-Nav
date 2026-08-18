@@ -4,10 +4,10 @@ from sensor_msgs.msg import CompressedImage
 from cv_bridge import CvBridge
 from deepface import DeepFace
 import cv2
+import os
 
-
-REFERENCE_IMAGE = (
-    "/workspaces/ros_ws/src/project/config/face_id/nahl.jpg"
+REFERENCE_DIR = (
+    "/workspaces/ros_ws/src/project/config/face_id/nahl"
 )
 
 CAMERA_TOPIC = (
@@ -21,6 +21,9 @@ class DeepFaceTest(Node):
         super().__init__("deepface_test")
 
         self.bridge = CvBridge()
+
+        if not os.path.exists(REFERENCE_DIR):
+            self.get_logger().error(f"Reference directory doesn't exist: {REFERENCE_DIR}")
 
         self.subscription = self.create_subscription(
             CompressedImage,
@@ -43,24 +46,28 @@ class DeepFaceTest(Node):
             cv2.imshow("DeepFace Test", frame)
 
             # Check whether the reference face is present
-            result = DeepFace.verify(
-                img1_path=REFERENCE_IMAGE,
-                img2_path=frame,
-                detector_backend="opencv",
-                enforce_detection=False
+            results = DeepFace.find(
+                img_path=frame,
+                db_path=REFERENCE_DIR,
+                model_name="VGG-Face",
+                detector_backend="mtcnn",
+                enforce_detection=False,
+                silent=True
             )
 
-            if result["verified"]:
-                self.get_logger().info(
-                    "Reference face detected! Closing..."
-                )
+            print(results)
+            match_found = any(not df.empty for df in results)
 
+            if match_found:
+                self.get_logger().info(
+                    "Reference face detected! Closing Window"
+                )
                 cv2.destroyAllWindows()
                 rclpy.shutdown()
                 return
 
         except Exception as e:
-            self.get_logger().debug(
+            self.get_logger().error(
                 f"DeepFace error: {e}"
             )
 
